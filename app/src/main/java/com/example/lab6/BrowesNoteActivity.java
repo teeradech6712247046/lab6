@@ -15,6 +15,10 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
+import java.util.ArrayList;
+import java.util.List;
+import java.util.concurrent.Executors;
+
 public class BrowesNoteActivity extends AppCompatActivity {
 
     Button addSearch ;
@@ -53,7 +57,13 @@ public class BrowesNoteActivity extends AppCompatActivity {
                     }
 
                     //2.2load data form DB
-
+                    Executors.newSingleThreadExecutor().execute(()->{
+                        List<NoteEntity>entities = AppDatabase.getInstance(this).noteDao().getAll();
+                        List<Note> notes = new ArrayList<>();
+                        for (NoteEntity e : entities){
+                            notes.
+                        }
+                            }
                     //2.3back to main thread
                     runOnUiThread(() ->{
                         progressBar2.setVisibility(View.GONE);
